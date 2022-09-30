@@ -58,6 +58,16 @@ function checkAnswer(currentLevel){
    }
 }
 
+//function to start the game
+function startGame(){
+   if (level === 0){
+      nextSequence();
+      if (userClickedPattern.length === gamePattern.length){
+         checkAnswer(level);
+      }
+   }
+}
+
 //function to start over
 function startOver(){
    level = 0;
@@ -77,13 +87,11 @@ gamePattern = [];
 userClickedPattern = [];
 
 var level = 0;
+
 //Start the game if any key was pressed:
-$(document).keypress(function(){
-   
-   nextSequence();
-   if (userClickedPattern.length === gamePattern.length){
-      checkAnswer(level);
-   }
-}); 
-   
+$(document).keypress(startGame); 
+// or if click anywhere on the screen:
+$(document).click(startGame);
+
+
 
